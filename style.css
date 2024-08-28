@@ -1,0 +1,139 @@
+/*******************************************
+ * Profile Card                            *
+ *        Profile Details                  *
+ *                Profile pic              *
+ *                  Profile Description    * 
+ *                        heading level 2  *
+ *                        para             *
+ *                        quote            *
+ *        Profile Links                    *
+ *                list                     *
+ *                  list item 1            *
+ *                        anchor tag       *
+********************************************/
+
+/*===================== Importing Fonts============================*/
+@font-face {
+  font-family: "Inter";
+  src: url(/assets/fonts/Inter-VariableFont_slnt\,wght.ttf);
+}
+
+/*======================== CSS Reset =============================*/
+
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+/*======================== CSS Variables =============================*/
+:root {
+  --primary-bg-color: hsl(0, 0%, 8%);
+  --secondary-bg-color: hsl(0, 0%, 12%);
+  --tertiary-bg-color: hsl(0, 0%, 20%);
+  --primary-color: hsl(0, 0%, 100%);
+  --secondary-color: hsl(75, 94%, 57%);
+  --body-font-size: 0.875rem; /*14px*/
+  --body-font-weight: 600;
+  --btn-font-weight: 700;
+}
+
+body {
+  padding: 2em; /* so that content doesn't touch the viewport on small screen devices*/
+  /* font properties on the entire document */
+  font-family: "Inter", sans-serif;
+  font-size: var(--body-font-size);
+  color: var(--primary-color);
+  /* center the card horizontally and vertically */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* give room for the body vertically so that  card looks vertically centered as well */
+  height: 100vh;
+  background-color: var(
+    --primary-bg-color
+  ); /* assigns color to body background , but not only limits it to body background also paints html background */
+}
+
+/*====================== 1.Profile Card ===========================*/
+
+.profile--card {
+  padding: 1.8em; /* wraps the card content around with a common buffer space */
+  background-color: var(--secondary-bg-color);
+  border-radius: 10px; /* rounds the card corners */
+  max-width: 28em; /* the width of the card wont go beyond 28em on wide screen devices*/
+}
+
+/*====================== 2.Profile Details ===========================*/
+.profile--details {
+  margin-bottom: 1.5em; /* Pushes the profile links nav area below by 1.5em */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2em; /* maintains a gap of 2em between the flex items ( profile picture = img , following text = figcaption)*/
+}
+
+/*==================== 3. Profile pic ===================*/
+
+.profile--details img {
+  border-radius: 50%;
+  max-width: 35%;
+}
+
+/*==================== 3. Profile pic description ===================*/
+
+.profile--description {
+  text-align: center; /* center aligns figcaption items  */
+}
+
+.profile--description h2 {
+  font-weight: var(--body-font-weight);
+}
+
+.profile--description p {
+  color: var(--secondary-color);
+  font-weight: var(--body-font-weight);
+  margin-top: 0.5em; /*pushes name away from itself by 0.5em */
+}
+
+.profile--description q {
+  /* As quotation is a inline element , its border padding margin properties are not respected */
+  /* So I had to make it an inline-block element or a block element and then assign those properties*/
+  display: inline-block;
+  margin: 2em 2em 0.7em; /* Top(2em) Left,Right(2em) Bottom(0.7em) */
+}
+
+/*====================== 2.Profile Links ===========================*/
+
+.profile--links ul {
+  list-style: none; /*Remove bullet points of unordered list*/
+  /*The list items are made flex items just to use the sleek gap property , 😜*/
+  display: flex;
+  flex-direction: column;
+  gap: 1.2em;
+}
+
+/*======================== Utility classes =============================*/
+
+/*Assign this class to any element and it would look like the social profile buttons 😎*/
+.btn {
+  text-decoration: none; /*remove underline as they are links */
+  background-color: var(--tertiary-bg-color);
+  /*As it is an inline item , so to modify the box model properties it is being converted to an inline-block or block element*/
+  display: inline-block;
+  padding: 1em;
+  width: 100%;
+  border-radius: 8px;
+  /*Button text properties*/
+  color: var(--primary-color);
+  font-weight: var(--btn-font-weight);
+  text-align: center;
+}
+
+.btn:hover,
+.btn:focus { /* If hovered with mouse or if tabbed with keyboard apply the following styles*/
+  background-color: var(--secondary-color);
+  color: var(--primary-bg-color);
+}
